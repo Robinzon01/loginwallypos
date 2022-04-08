@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     const e1 = 'jbarbieri@wallypos.com';
     const p1 = '123456';
     if (ema.trim() === e1 && pas.trim() === p1) {
+        localStorage.setItem('email', e1);
         this.router.navigate(['page/home']);
     }else{
       this.estadoM = false;
