@@ -1,1 +1,46 @@
-<p>login works!</p>
+<section class="vh-100" style="background-color: #508bfc;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5">
+
+            <h1 class="mb-5 text-center"><strong>LOGIN</strong></h1>
+            <form [formGroup]="fLogin" #frmLogin="ngForm" (ngSubmit)="iniciarSession()">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Email</label>
+                  <input type="email" formControlName="email" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese su Email">
+                </div>
+                <div *ngIf="fb.email.errors?.required && fb.email.touched">
+                  <p class="text-center">Email requerido</p>
+                </div>
+                <div *ngIf="fb.email.errors?.pattern">
+                   <p class="text-center">No es un email valido</p>
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleFormControlInput12" class="form-label">Contraseña</label>
+                  <input type="password" formControlName="password"  class="form-control" id="exampleFormControlInput12" placeholder="Ingrese su Contraseña">
+                </div>
+                 <div *ngIf="fb.password.errors?.required && fb.password.touched">
+                   <p class="text-center">Contraseña requerido</p>
+                 </div>
+              <div class="form-group">
+                <div class="alert alert-warning has-icon" role="alert" [hidden]="estadoM">
+                  <div class="alert-icon">
+                    <span class="fa fa-bullhorn"></span>
+                  </div><strong>Email o Contraseña incorrecta</strong>
+                </div>
+              </div>
+                <div class="mb-3">
+                  <button [disabled]="frmLogin.invalid"  style="width: 100%;" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                </div>
+            </form>
+            <hr class="my-4">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
